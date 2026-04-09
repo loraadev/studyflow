@@ -1,16 +1,78 @@
-# React + Vite
+# StudyFlow 📚
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Sistema web de organização de estudos e acompanhamento de produtividade. Esse projeto foi desenvolvido para fins universitários. 
 
-Currently, two official plugins are available:
+🔗 **Demo ao vivo:** https://studyflow-sand.vercel.app
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+---
 
-## React Compiler
+## Funcionalidades
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- **Dashboard** — visão geral com métricas do dia, semana e sequência
+- **Planejamento** — criação e gerenciamento de tarefas por prioridade
+- **Timer** — cronômetro com modo Pomodoro e registro automático
+- **Relatórios** — gráficos de evolução por dia e por disciplina
 
-## Expanding the ESLint configuration
+## Tecnologias
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+| Camada | Tecnologia |
+|---|---|
+| Frontend | React 19 + Vite |
+| Estilização | Tailwind CSS |
+| Banco de dados | Supabase (PostgreSQL) |
+| Hospedagem | Vercel |
+| Testes | Vitest + Testing Library |
+| CI/CD | GitHub Actions |
+
+## Como rodar localmente
+
+```bash
+# 1. Clone o repositório
+git clone https://github.com/SeuUsuario/studyflow.git
+cd studyflow
+
+# 2. Instale as dependências
+npm install
+
+# 3. Configure as variáveis de ambiente
+cp .env.example .env
+# Edite o .env com suas chaves do Supabase
+
+# 4. Rode o projeto
+npm run dev
+```
+
+## Variáveis de ambiente
+
+Configure as variáveis de ambiente.
+
+`VITE_SUPABASE_URL=sua_url_do_supabase`  
+`VITE_SUPABASE_ANON_KEY=sua_chave_anon`
+
+## Testes
+
+```bash
+npx vitest run
+```
+
+## Estrutura do projeto
+
+````
+src/
+├── api/          # Camada de acesso ao Supabase
+├── components/   # Componentes React reutilizáveis
+│   └── ui/       # Componentes base (Button, Card, Badge...)
+├── context/      # Estado global com Context API
+├── hooks/        # Hooks customizados (useTimer...)
+├── utils/        # Funções utilitárias puras
+└── tests/        # Testes automatizados
+````
+
+## CI/CD
+
+A cada push na branch `main` o GitHub Actions executa automaticamente:
+1. Instalação das dependências
+2. Testes automatizados
+3. Build de produção
+
+Se tudo passar, a Vercel faz o deploy automaticamente.
